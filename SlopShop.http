@@ -1,0 +1,6 @@
+@SlopShop_HostAddress = http://localhost:5046
+
+GET {{SlopShop_HostAddress}}/products/
+Accept: application/json
+
+###

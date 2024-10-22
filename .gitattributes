@@ -1,0 +1,5 @@
+wwwroot/lib/* linguist-vendored=false
+*.cshtml linguist-detectable=false
+*.html linguist-detectabe=false
+*.css linguist-detectable=false
+wwwroot/lib/* linguist-detectable=false
