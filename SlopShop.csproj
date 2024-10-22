@@ -21,4 +21,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="src\Constants\" />
+    <Folder Include="src\Exceptions\" />
+    <Folder Include="src\Utilities\" />
+  </ItemGroup>
+
 </Project>
