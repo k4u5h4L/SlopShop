@@ -4,3 +4,48 @@ GET {{SlopShop_HostAddress}}/products?page=1
 Accept: application/json
 
 ###
+
+GET {{SlopShop_HostAddress}}/products/1
+Accept: application/json
+
+###
+
+POST {{SlopShop_HostAddress}}/products
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "New product",
+  "category": "Temp",
+  "subCategory": "Test",
+  "brand": "New brand",
+  "salePrice": 220,
+  "marketPrice": 220,
+  "type": "Test",
+  "rating": 4,
+  "description": "Some boring loren ipsum text blah blah blah..."
+}
+
+###
+
+DELETE {{SlopShop_HostAddress}}/products/27555
+Content-Type: application/json
+Accept: application/json
+
+###
+
+PUT {{SlopShop_HostAddress}}/products/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "New product",
+  "category": "Temp",
+  "subCategory": "Test",
+  "brand": "New brand",
+  "salePrice": 220,
+  "marketPrice": 220,
+  "type": "Test",
+  "rating": 4,
+  "description": "Some boring loren ipsum text blah blah blah..."
+}

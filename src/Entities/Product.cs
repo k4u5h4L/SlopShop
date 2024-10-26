@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using SlopShop.Models.DTOs;
 
 namespace SlopShop.Entities;
 
 public partial class Product
 {
-    public Product(int id, string? name, string? category, string? subCategory, string? brand, int? salePrice, int? marketPrice, string? type, decimal? rating, string? description)
+    public Product(int? id, string? name, string? category, string? subCategory, string? brand, int? salePrice, int? marketPrice, string? type, decimal? rating, string? description)
     {
         Id = id;
         Name = name;
@@ -19,7 +20,25 @@ public partial class Product
         Description = description;
     }
 
-    public int Id { get; set; }
+    public Product(ProductDto dto)
+    {
+        this.Update(dto);
+    }
+
+    public void Update(ProductDto dto)
+    {
+        Name = dto.Name;
+        Category = dto.Category;
+        SubCategory = dto.SubCategory;
+        Brand = dto.Brand;
+        SalePrice = dto.SalePrice;
+        MarketPrice = dto.MarketPrice;
+        Type = dto.Type;
+        Rating = dto.Rating;
+        Description = dto.Description;
+    }
+
+    public int? Id { get; set; }
 
     public string? Name { get; set; }
 
