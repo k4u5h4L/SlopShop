@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using Microsoft.AspNetCore.Mvc;
+using SlopShop.Constants;
 using SlopShop.Entities;
 using SlopShop.Exceptions;
 using SlopShop.Models.DTOs;
@@ -21,17 +22,17 @@ public class ProductsController : ControllerBase
         _productsService = productsService;
     }
 
-    [HttpGet(Name = "GetAllProducts")]
+    [HttpGet(Name = ControllerConstants.GetAllProductsName)]
     public Product[] GetAllProducts([FromQuery(Name = "page"), DefaultValue(1)] int page)
     {
-        _logger.LogInformation("Hit GetAllProducts endpoint");
+        _logger.LogInformation($"Hit {ControllerConstants.GetAllProductsName} endpoint");
         return _productsService.GetProducts(page);
     }
     
-    [HttpGet("{id:int}", Name = "GetProductById")]
+    [HttpGet("{id:int}", Name = ControllerConstants.GetProductByIdName)]
     public async Task<ActionResult<Product>> GetProductById([FromRoute(Name = "id")] int id)
     {
-        _logger.LogInformation("Hit GetProductById endpoint");
+        _logger.LogInformation($"Hit {ControllerConstants.GetProductByIdName} endpoint");
         try
         {
             return await _productsService.GetProductById(id).ConfigureAwait(false);
@@ -42,10 +43,10 @@ public class ProductsController : ControllerBase
         }
     }
     
-    [HttpPost(Name = "CreateProduct")]
+    [HttpPost(Name = ControllerConstants.CreateProductName)]
     public async Task<ActionResult<Product>> CreateProduct([FromBody] ProductDto productDto)
     {
-        _logger.LogInformation("Hit CreateProduct endpoint");
+        _logger.LogInformation($"Hit {ControllerConstants.CreateProductName} endpoint");
         try
         {
             var product = await _productsService.CreateProduct(productDto);
@@ -58,10 +59,10 @@ public class ProductsController : ControllerBase
         }
     }
     
-    [HttpDelete("{id:int}", Name = "DeleteProduct")]
+    [HttpDelete("{id:int}", Name = ControllerConstants.DeleteProductName)]
     public async Task<ActionResult<Product>> DeleteProduct([FromRoute(Name = "id")] int id)
     {
-        _logger.LogInformation("Hit DeleteProduct endpoint");
+        _logger.LogInformation($"Hit {ControllerConstants.DeleteProductName} endpoint");
         try
         {
             var product = await _productsService.DeleteProduct(id);
@@ -74,10 +75,10 @@ public class ProductsController : ControllerBase
         }
     }
     
-    [HttpPut("{id:int}", Name = "UpdateProduct")]
+    [HttpPut("{id:int}", Name = ControllerConstants.UpdateProductName)]
     public async Task<ActionResult<Product>> UpdateProduct([FromRoute(Name = "id")] int id, [FromBody] ProductDto productDto)
     {
-        _logger.LogInformation("Hit UpdateProduct endpoint");
+        _logger.LogInformation($"Hit {ControllerConstants.UpdateProductName} endpoint");
         try
         {
             var product = await _productsService.UpdateProduct(id, productDto);

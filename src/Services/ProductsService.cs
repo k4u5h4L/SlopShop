@@ -2,6 +2,7 @@ using SlopShop.Entities;
 using SlopShop.Exceptions;
 using SlopShop.Models.DTOs;
 using SlopShop.Repositories;
+using SlopShop.Utilities;
 
 namespace SlopShop.Services;
 
@@ -19,10 +20,7 @@ public class ProductsService
 
     public Product[] GetProducts(int page)
     {
-        if (page < 1)
-        {
-            page = 1;
-        }
+        page = GenericUtils.GetPageNumber(page);
         
         var products = _dbContext.Products.Skip(10 * (page - 1)).Take(10).ToList();
         
